@@ -42,8 +42,16 @@ The project must be implemented using https://angular.io/.
     What happens if you type while `products.json` is loading.
    `exhaustMap` might help you solve any race condition issues. 
   
+**Requirements fulfilled**
+1. The products is fetched via ´HttpClient get´
+1. The pagination has a backward and forwards button, and a indicator to what page you are currently at.
+1. The full text search is working and implemented using rxjs, and are only fetching the products.json once, when the user attempts to make the first search. The debounce is set to 350ms, since I found that if it is 150ms it could begin to fetch results before typing is complete.
+1. The app is working on Fast 3G and lower network bandwiths aswell, and it displays a message where it states it is currently fetching the data on slower connections.
+
 **Extra questions, for extra fun**
 1. Which data structure makes this search fast, like almost constant time. Show example?
 1. It's friday night. How much beer do you drink?
 
-
+**Fun questions answered**
+1. I am not sure I fully understand this question, therefor I am going to explain what implementation I went with for filtering products. I made a list/array with the search term, splitted by ' ' and trimmed to get rid of whitespaces which could break the search I found. Next I created a pipe with the products loaded in, before this the code checks if the products are loaded, if it isn't it will fetch the products. Then I filtered the products and looped trough the search term list/array to check if any of these matched a title in the products. This was the solution I found worked best, proberly not the most optimized version, but since the requirement is to search in freetext and find products that are not exactly the search term this was the way I did it.
+1. On a friday night it's around 9-10, that's a good amount for me ;)

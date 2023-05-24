@@ -1,0 +1,62 @@
+$darkMode: true;
+
+@mixin darkMode {
+    @if($darkMode) {
+      @media(prefers-color-scheme: dark) {
+        @content;
+      }
+    }
+  }
+
+html {
+    font-family: sans-serif;
+    background-color: white;
+    color:black;
+    @include darkMode {
+      background-color: #202124;
+      color: white;
+    }
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mobileNotificationHolder {
+    position: absolute;
+    bottom:0px;
+    right:0px;
+    overflow: hidden;
+}
+
+#mobileNotification {
+    font-size:1.1rem;
+    color: rgb(0,0,255);
+    background-color:rgb(242, 220, 253);
+    font-weight:bold;
+    width:250px;
+    height:100px;
+    border-radius:8px 0 0 0;
+    line-height:35px;
+    animation-name:slideIn;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-delay: 10s;
+    transform: translateX(100%);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+    #mobileNotificationHolder {
+        display:none !important;
+    }
+  }

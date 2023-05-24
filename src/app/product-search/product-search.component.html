@@ -1,0 +1,29 @@
+
+<div id="search_input_border">
+    <i class="gg-search"></i>
+    <input id="search" #search placeholder="Search for the parts you need"/>
+</div>
+
+<div id="info_container" *ngIf="productsFound == false || (productsFound == true && searched_products.length == 0 && search.value.length != 0)">
+    <span *ngIf="productsFound == false">Sorry we found no products matching your search</span>
+    <span *ngIf="productsFound == true && searched_products.length == 0">Hold on while we are loading the products!</span>
+</div>
+
+<div id="searched_products" *ngIf="searched_products.length != 0">
+    <div class="product" *ngFor='let product of searched_products | slice:pageOffset:pageOffset + 10' (click)="openProduct(product.title)">
+        <div class="product_title_border">  
+            <span class="product_title">{{ product.title }}</span>
+            <span class="product_brand" *ngIf="product.brand">Brand: {{ product.brand }}</span>
+        </div>
+        <div class="product_price_border">
+            <span>{{ product.price }},-</span>
+        </div>
+    </div>
+    <div id="pagination" *ngIf="searched_products.length > 10">
+        <div id="pagination_back" (click)="pageOffset = pageOffset - 10" *ngIf="pageOffset != 0"><<</div>
+        <div id="pagination_current_page">
+            <span>Page: {{ pageOffset / 10 + 1 }}</span>
+        </div>
+        <div id="pagination_forward" (click)="pageOffset = pageOffset + 10" *ngIf="(searched_products.length - pageOffset) > 10">>></div>
+    </div>
+</div>
