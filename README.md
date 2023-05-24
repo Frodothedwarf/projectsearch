@@ -1,4 +1,4 @@
-# Product search
+# Product search, check bottom of readme to get answers to the questions
 
 From now, you can code this project in any JS/TS framework you prefer, but make sure to test your code as descripted in 4.   
 
@@ -43,7 +43,7 @@ The project must be implemented using https://angular.io/.
    `exhaustMap` might help you solve any race condition issues. 
   
 **Requirements fulfilled**
-1. The products is fetched via ´HttpClient get´
+1. The products is fetched via `HttpClient get`
 1. The pagination has a backward and forwards button, and a indicator to what page you are currently at.
 1. The full text search is working and implemented using rxjs, and are only fetching the products.json once, when the user attempts to make the first search. The debounce is set to 350ms, since I found that if it is 150ms it could begin to fetch results before typing is complete.
 1. The app is working on Fast 3G and lower network bandwiths aswell, and it displays a message where it states it is currently fetching the data on slower connections.
